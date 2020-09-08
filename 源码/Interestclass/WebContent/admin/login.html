@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>兴趣班管理系统</title>
+<link href="login/css/login.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="login/js/jQuery1.7.js"></script>
+<script type="text/javascript" src="login/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="login/js/jquery.SuperSlide.js"></script>
+<script type="text/javascript" src="login/js/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var $tab_li = $('#tab ul li');
+		$tab_li.hover(function() {
+			$(this).addClass('selected').siblings().removeClass('selected');
+			var index = $tab_li.index(this);
+			$('div.tab_box > div').eq(index).show().siblings().hide();
+		});
+	});
+</script>
+<script type="text/javascript">
+	$(function(){
+		$(".screenbg ul li").each(function(){
+			$(this).css("opacity","0");
+		});
+		$(".screenbg ul li:first").css("opacity","1");
+		var index = 0;
+		var t;
+		var li = $(".screenbg ul li");	
+		var number = li.size();
+		function change(index){
+			li.css("visibility","visible");
+			li.eq(index).siblings().animate({opacity:0},3000);
+			li.eq(index).animate({opacity:1},3000);
+		}
+		function show(){
+			index = index + 1;
+			if(index<=number-1){
+				change(index);
+			}else{
+				index = 0;
+				change(index);
+			}
+		}
+		t = setInterval(show,8000);
+		//根据窗口宽度生成图片宽度
+		var width = $(window).width();
+		$(".screenbg ul img").css("width",width+"px");
+	});
+</script>
+	<script type="text/javascript">
+		function loadimage3() {
+			document.getElementById("randImage3").src = "image.jsp?"
+					+ Math.random();
+		}
+	</script>
+	<script type="text/javascript">
+		function loginuserAdmin(){
+        	alert("用户请直接用手机端打开！");
+		}
+    </script>
+    <script type="text/javascript">
+	    function loginAdmin(){
+        	var adminuser_username = document.getElementById("adminuser_username3").value;//获取登录教务名称
+        	var adminuser_password = document.getElementById("adminuser_password3").value;//获取登录用户密码
+        	var imageCode = document.getElementById("imageCode3").value;//获取登录验证码
+
+            if (adminuser_username == "" || adminuser_username == null) {
+            	document.getElementById("login-message3").style.display = 'block';
+            	document.getElementById("login-message-content3").innerText = "教务名称不能为空";
+            } else if (adminuser_password == "" || adminuser_password == null) {
+            	document.getElementById("login-message3").style.display = 'block';
+            	document.getElementById("login-message-content3").innerText = "密码不能为空";
+            } else if (imageCode == "" || imageCode == null) {
+            	document.getElementById("login-message3").style.display = 'block';
+            	document.getElementById("login-message-content3").innerText = "验证码不能为空";
+            } else {
+            	document.getElementById("login-message3").style.display = 'none';
+            	$.post(
+						"loginAdmin",
+						{
+							adminuser_username : adminuser_username,
+							adminuser_password : adminuser_password,
+							imageCode : imageCode
+						},
+						function(result) {
+							var result = eval('(' + result + ')');
+							if (result.result=="failone") {
+								document.getElementById("login-message3").style.display = 'block';
+								document.getElementById("login-message-content3").innerText = result.message;
+								flag = false;
+							} else if (result.result=="failtwo") {
+								document.getElementById("login-message3").style.display = 'block';
+								document.getElementById("login-message-content3").innerText = result.message;
+								flag = false;
+							} else if (result.result=="failthree") {
+								document.getElementById("login-message3").style.display = 'block';
+								document.getElementById("login-message-content3").innerText = result.message;
+								flag = false;
+							} else if (result.result=="failfour") {
+								document.getElementById("login-message3").style.display = 'block';
+								document.getElementById("login-message-content3").innerText = result.message;
+								flag = false;
+							} else if (result.result=="success") {//登录成功
+								document.getElementById("login-message3").style.display = 'block';
+								document.getElementById("login-message-content3").innerText = result.message;
+								window.location.href = "main";
+								flag = true;
+							}
+				      });
+            }
+            return false;
+	    }
+    </script>
+</head>
+
+<body>
+	<div id="tab" style="margin-top:150px;">
+		<ul class="tab_menu">
+			<li>管理登录</li>
+		</ul>
+		<div class="tab_box">
+			<!-- 管理登录开始-->
+			<div>
+				<div class="stu_error_box" id="login-message3" style="display:none;">
+					<p>
+						<span id="login-message-content3" style="color:red;"></span>
+					</p>
+				</div>
+				<form id="login-form-adminuser">
+					<div id="username">
+						<label>管理名称：</label> 
+						<input type="text" id="adminuser_username3" name="adminuser_username3" value="" placeholder="输入管理员名称"/>
+					</div>
+					<div id="password">
+						<label>密&nbsp;&nbsp;&nbsp;码：</label> 
+						<input type="password" id="adminuser_password3" name="adminuser_password3" value="" placeholder="输入密码"/>
+					</div>
+					<div id="code">
+						<div style="float: left;margin-left:25px;">
+							<label>验证码：</label>
+						</div>
+						<div style="float: left;margin-top:-20px;margin-left:-15px;">
+							<input style="width:80px;" type="text" id="imageCode3" name="imageCode3" value="" placeholder="输入验证码"/>
+						</div>
+						<div style="float: left;margin-top:-10px;">
+							<img onclick="javascript:loadimage3();" src="image.jsp" id="randImage3" name="randImage3" title="点击更换" alt="验证码占位图" />
+						</div>
+					</div>
+					<div>
+						<button type="button" onclick="loginAdmin();" style="background-color:#000;">管理登录</button>
+					</div>
+				</form>
+			</div>
+			<!-- 管理登录结束-->
+			<!-- 用户登录开始-->
+			<div class="hide">
+				<div class="stu_error_box" id="login-message2" style="display:none;">
+					<p>
+						<span id="login-message-content2" style="color:red;"></span>
+					</p>
+				</div>
+				<form id="login-form-teacher">
+					<div id="username">
+						<label>手机号码：</label> 
+						<input type="text" id="adminuser_number2" name="adminuser_number2" value="" placeholder="输入手机号码" />
+					</div>
+					<div id="password">
+						<label>密&nbsp;&nbsp;&nbsp;码：</label> 
+						<input type="password" id="adminuser_password2" name="adminuser_password2" value="" placeholder="输入密码" />
+					</div>
+					<div id="code">
+						<div style="float: left;margin-left:25px;">
+							<label>验证码：</label>
+						</div>
+						<div style="float: left;margin-top:-20px;margin-left:-15px;">
+							<input style="width:80px;" type="text" id="imageCode2" name="imageCode2" value="" placeholder="输入验证码" />
+						</div>
+						<div style="float: left;margin-top:-10px;">
+							<img onclick="javascript:loadimage2();" src="image.jsp" id="randImage2" name="randImage2" title="点击更换" alt="验证码占位图" />
+						</div>
+					</div>
+					<div>
+						<button type="button" onclick="loginuserAdmin();" style="background-color:#000;">用户登录</button>
+					</div>
+				</form>
+			</div>
+			<!-- 用户登录结束-->
+		</div>
+	</div>
+	<div class="screenbg">
+		<ul>
+			<li>
+				<a href="javascript:;">
+					<img src="login/images/loginback.jpg">
+				</a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

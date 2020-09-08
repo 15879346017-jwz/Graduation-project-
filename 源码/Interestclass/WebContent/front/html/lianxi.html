@@ -1,0 +1,804 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<meta name="generator" content="bd-mobcard">
+<meta http-equiv="Cache-Control" content="no-cache">
+<script type="text/javascript" src="exam/js/jquery-1.8.3.min.js"> </script>
+<script type="text/javascript">
+$(function(){
+//        alert(document.title);
+//        $('#begin').click(function(){
+//            $('#notice').css('display','none');
+//            $('#title').css('display','none');
+////            var leftPos = (typeof window.screenLeft == "number") ? window.screenTop : window.screenY;
+////            window.moveTo(200,0)
+//             // $("#notice").scrollTop(1000);
+//        //   alert($("#notice").offset().top);
+//             scrollOffset($("#notice").offset()); 
+////            // jQuery 定位让body的scrollTop等于pos的top，就实现了滚动 
+//            function scrollOffset(scroll_offset) { 
+//            $("body,html").animate({ 
+//            scrollTop: scroll_offset.top+1000
+//            }, 0); 
+//            } ;
+//         window.scroll(20000,2000); //2000代表定位到这个页面距离顶端2000px;
+//         location.href = "#notice";
+//          $('.test:first').css('display','block');
+////           alert($('.test:first').html());
+//            
+//        });
+	$('#begin_2').click(function(){
+	 
+	   $('.topbox').css('display','none'); 
+		$('.test:first').css('display','block'); 
+	});
+	 
+	$('li').click(function(){
+		$(this).addClass('on');
+//            alert(   $(this).html());
+		var select=$(this).children(':radio').val();
+		var answer=$(this).parents('div').children(':hidden').val();
+//           s alert($(this).children(':radio').val());
+		var sumScore=$('#sumScore').val();
+		if(select===answer){
+			$('#sumScore').val(parseInt(sumScore)+1);
+		}
+//            alert( $(this).parents('.test').css('display'));
+		$(this).parents('div').css('display','none');
+		if( $(this).parents('div').next('div').hasClass('end')){
+		   var score= $('#sumScore').val();
+		   if(score<5){
+			   var src="images/score"+score*5+".png";
+				 $('#level1 .score img').attr('src',src);
+				$('#level1').css('display','block');
+		   }else if(score<10){
+				 var src="images/score"+score*5+".png";
+				 $('#level2 .score img').attr('src',src);
+				 $('#level2').css('display','block');
+		   }else if(score<15){
+				 var src="images/score"+score*5+".png";
+				 $('#level3 .score img').attr('src',src);
+				 $('#level3').css('display','block');
+		   }else{ 
+				 var src="images/score"+score*5+".png";
+				 $('#level4 .score img').attr('src',src);
+				 $('#level4').css('display','block');
+		   }
+		   document.title="我在网络英语4级考试中得到了"+score*5+"分，你能超过我吗?";
+		   $('.guanzhu1').css('display','block');
+//               alert(document.title);
+		   
+		}else{
+			   $(this).parents('div').next('div').css('display','block');
+		}
+//            alert( $(this).parents('div').next('div').html());
+	});
+	
+ $(':radio').click(function(){
+		 $(this).parents('li').addClass('on');
+//             alert( $(this).parents('li').html());
+		var select=$(this).val();
+		var answer=$(this).parents('div').children(':hidden').val();
+		var sumScore=$('#sumScore').val();
+		if(select===answer){
+			$('#sumScore').val(parseInt(sumScore)+1);
+		}
+//            alert( $(this).parents('.test').css('display'));
+		$(this).parents('div').css('display','none');
+		if( $(this).parents('div').next('div').hasClass('end')){
+		   var score= $('#sumScore').val();
+		   if(score<5){
+			   var src="images/score"+score*5+".png";
+				 $('#level1 .score img').attr('src',src);
+				$('#level1').css('display','block');
+		   }else if(score<10){
+				 var src="images/score"+score*5+".png";
+				 $('#level2 .score img').attr('src',src);
+				 $('#level2').css('display','block');
+		   }else if(score<15){
+				 var src="images/score"+score*5+".png";
+				 $('#level3 .score img').attr('src',src);
+				 $('#level3').css('display','block');
+		   }else{ 
+				 var src="images/score"+score*5+".png";
+				 $('#level4 .score img').attr('src',src);
+				 $('#level4').css('display','block');
+		   }
+		   
+		}else{
+			   $(this).parents('div').next('div').css('display','block');
+		}
+	});
+	   
+		  $('.share').click(function(){
+		   $('.share_b').css('display','block');
+			 location.href = "#title";
+		});
+		
+		$('.share_b').click(function(){
+			$(this).css('display','none');
+		});
+		$('#close').click(function(){
+		   $('.guanzhu1').css('display','none');
+		});
+	
+})
+</script>
+
+<title>汉语言习题练习</title>
+
+<link href="exam/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div class="topbox" id='title'>
+		<img src="images/bg.png" class="bg" />
+		<div class="con" style="margin-top:80px;">
+			<a id="begin_2" class="test_a"><img src="images/btn.png" alt="" /></a>
+		</div>
+	</div>
+
+	<div class="gztt" id='notice'></div>
+
+
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt="" style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>1.</span>怎么是你，怎么老是你？
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test1" id="" class="rad"
+							value='A' /><span>A</span>Why is you,Why is always you ?</li>
+						<li><input type="radio" name="test1" id="" class="rad"
+							value='B' /><span>B</span>How are you,How old are you ?</li>
+						<li><input type="radio" name="test1" id="" class="rad"
+							value='C'><span>C</span>How could it be you?why are you
+							always around ?</li>
+						<li class="bn"><input type="radio" name="test1" id=""
+							class="rad" value='D' /><span>D</span>How are you ? Why are you
+							always around?</li>
+					</ul>
+					<input type="hidden" value="B">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>2.</span>有多远，死多远！
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test2" id="" class="rad"
+							value='A' /><span>A</span>Leave me alone !</li>
+						<li><input type="radio" name="test2" id="" class="rad"
+							value='B' /><span>B</span>As far as you go to die !</li>
+						<li><input type="radio" name="test2" id="" class="rad"
+							value='C'><span>C</span>How long does it have , You go to
+							die there !</li>
+						<li class="bn"><input type="radio" name="test2" id=""
+							class="rad" value='D' /><span>D</span>You go to die no matter how
+							long is it !</li>
+					</ul>
+					<input type="hidden" value="B">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>3.</span>你给我站住！
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test3" id="" class="rad"
+							value='A' /><span>A</span>You Give Me Stop !</li>
+						<li><input type="radio" name="test3" id="" class="rad"
+							value='B' /><span>B</span>You give me stand live !</li>
+						<li><input type="radio" name="test3" id="" class="rad"
+							value='C'><span>C</span>You Stop !</li>
+						<li class="bn"><input type="radio" name="test3" id=""
+							class="rad" value='D' /><span>D</span>Stop !</li>
+					</ul>
+					<input type="hidden" value="A">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>4.</span>咱俩谁跟谁啊 ?
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test4" id="" class="rad"
+							value='A' /><span>A</span>We are all one ！</li>
+						<li><input type="radio" name="test4" id="" class="rad"
+							value='B' /><span>B</span>Don't mention it ?</li>
+						<li><input type="radio" name="test4" id="" class="rad"
+							value='C'><span>C</span>We two who and who ？</li>
+						<li class="bn"><input type="radio" name="test4" id=""
+							class="rad" value='D' /><span>D</span>We are our own people ！</li>
+					</ul>
+					<input type="hidden" value="C">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>5.</span>你有种，我要给你点颜色瞧瞧 ！
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test5" id="" class="rad"
+							value='A' /><span>A</span>You are fierce ，I will show you some
+							color !</li>
+						<li><input type="radio" name="test5" id="" class="rad"
+							value='B' /><span>B</span>You have seed I will give you some
+							color to see see !</li>
+						<li><input type="radio" name="test5" id="" class="rad"
+							value='C'><span>C</span>You are fierce ，I'll teach you a
+							lesson !</li>
+						<li class="bn"><input type="radio" name="test5" id=""
+							class="rad" value='D' /><span>D</span>You have seed, I'll teach
+							you a lesson !</li>
+					</ul>
+					<input type="hidden" value="B">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>6.</span>知之为知之，不知为不知.
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test6" id="" class="rad"
+							value='A' /><span>A</span>Know is know noknow is noknow .</li>
+						<li><input type="radio" name="test6" id="" class="rad"
+							value='B' /><span>B</span>Don't pretend to know what you don't
+							know .</li>
+						<li><input type="radio" name="test6" id="" class="rad"
+							value='C'><span>C</span>If you don't know , don't make
+							you seems know .</li>
+						<li class="bn"><input type="radio" name="test6" id=""
+							class="rad" value='D' /><span>D</span>Know, you understand, don't
+							know, you don't understand</li>
+					</ul>
+					<input type="hidden" value="A">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>7.</span>心花怒放 .
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test7" id="" class="rad"
+							value='A' /><span>A</span>It is very happy .</li>
+						<li><input type="radio" name="test7" id="" class="rad"
+							value='B' /><span>B</span>Heart flower angry open .</li>
+						<li><input type="radio" name="test7" id="" class="rad"
+							value='C'><span>C</span>Be wild with joy .</li>
+						<li class="bn"><input type="radio" name="test7" id=""
+							class="rad" value='D' /><span>D</span>Heart is full of joy.</li>
+					</ul>
+					<input type="hidden" value="B">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>8.</span>走过路过，不要错过 .
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test8" id="" class="rad"
+							value='A' /><span>A</span>Go past no mistake past .</li>
+						<li><input type="radio" name="test8" id="" class="rad"
+							value='B' /><span>B</span>Don't miss it .</li>
+						<li><input type="radio" name="test8" id="" class="rad"
+							value='C'><span>C</span>Go past Road past ,Don't wrong
+							past .</li>
+						<li class="bn"><input type="radio" name="test8" id=""
+							class="rad" value='D' /><span>D</span>Don't miss it when you go
+							to the road .</li>
+					</ul>
+					<input type="hidden" value="A">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>9.</span>好好学习，天天向上
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test9" id="" class="rad"
+							value='A' /><span>A</span>Good good study , Day day up</li>
+						<li><input type="radio" name="test9" id="" class="rad"
+							value='B' /><span>B</span>Study hard and make progress every day
+						</li>
+						<li><input type="radio" name="test9" id="" class="rad"
+							value='C'><span>C</span>Study hard and you will grow
+							taller</li>
+						<li class="bn"><input type="radio" name="test9" id=""
+							class="rad" value='D' /><span>D</span>Good good study , make
+							progress every day</li>
+					</ul>
+					<input type="hidden" value="A">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>10.</span>兄弟们，一起上
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test10" id="" class="rad"
+							value='A' /><span>A</span>Brothers ！ together up</li>
+						<li><input type="radio" name="test10" id="" class="rad"
+							value='B' /><span>B</span>Brothers , go together</li>
+						<li><input type="radio" name="test10" id="" class="rad"
+							value='C'><span>C</span>Brothers , Let us go togerther</li>
+						<li class="bn"><input type="radio" name="test10" id=""
+							class="rad" value='D' /><span>D</span>Everyone go</li>
+					</ul>
+					<input type="hidden" value="A">
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>11.</span>表妹
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test11" id="" class="rad"
+							value='A' /><span>A</span>Sister</li>
+						<li><input type="radio" name="test11" id="" class="rad"
+							value='B' /><span>B</span>Cousin</li>
+						<li><input type="radio" name="test11" id="" class="rad"
+							value='C'><span>C</span>Watch sister</li>
+						<li class="bn"><input type="radio" name="test11" id=""
+							class="rad" value='D' /><span>D</span>Cousin sister</li>
+					</ul>
+					<input type="hidden" value="C">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>12.</span>彼此彼此
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test12" id="" class="rad"
+							value='A' /><span>A</span>you me you me</li>
+						<li><input type="radio" name="test12" id="" class="rad"
+							value='B' /><span>B</span>Right back at you</li>
+						<li><input type="radio" name="test12" id="" class="rad"
+							value='C'><span>C</span>The same to you</li>
+						<li class="bn"><input type="radio" name="test12" id=""
+							class="rad" value='D' /><span>D</span>You or me , you or me</li>
+					</ul>
+					<input type="hidden" value="A">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>13.</span>要钱没有，要命一条
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test13" id="" class="rad"
+							value='A' /><span>A</span>If you want money , I have no; if you
+							want life, I haveone !</li>
+						<li><input type="radio" name="test13" id="" class="rad"
+							value='B' /><span>B</span>No many Have life</li>
+						<li><input type="radio" name="test13" id="" class="rad"
+							value='C'><span>C</span>I don't have much money on me</li>
+						<li class="bn"><input type="radio" name="test13" id=""
+							class="rad" value='D' /><span>D</span>No many ，If you want
+							something, I have life to give you.</li>
+					</ul>
+					<input type="hidden" value="A">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>14.</span>你有两下子
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test14" id="" class="rad"
+							value='A' /><span>A</span>You are really something</li>
+						<li><input type="radio" name="test14" id="" class="rad"
+							value='B' /><span>B</span>You have two down son</li>
+						<li><input type="radio" name="test14" id="" class="rad"
+							value='C'><span>C</span>You have two things</li>
+						<li class="bn"><input type="radio" name="test14" id=""
+							class="rad" value='D' /><span>D</span>You are nb</li>
+					</ul>
+					<input type="hidden" value="B">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>15.</span>七上八下
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test15" id="" class="rad"
+							value='A' /><span>A</span>An unsettled state of mind</li>
+						<li><input type="radio" name="test15" id="" class="rad"
+							value='B' /><span>B</span>Eight under Seven</li>
+						<li><input type="radio" name="test15" id="" class="rad"
+							value='C'><span>C</span>Seven on eight</li>
+						<li class="bn"><input type="radio" name="test15" id=""
+							class="rad" value='D' /><span>D</span>Seven up eight down</li>
+					</ul>
+					<input type="hidden" value="D">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>16.</span>王八蛋
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test16" id="" class="rad"
+							value='A' /><span>A</span>Wang eight eggs</li>
+						<li><input type="radio" name="test16" id="" class="rad"
+							value='B' /><span>B</span>King eight eggs</li>
+						<li><input type="radio" name="test16" id="" class="rad"
+							value='C'><span>C</span>Bastard</li>
+						<li class="bn"><input type="radio" name="test16" id=""
+							class="rad" value='D' /><span>D</span>The egg of Tortoise</li>
+					</ul>
+					<input type="hidden" value="A">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>17.</span>不管三七二十一
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test17" id="" class="rad"
+							value='A' /><span>A</span>No care three seven two ten one .</li>
+						<li><input type="radio" name="test17" id="" class="rad"
+							value='B' /><span>B</span>Flinging all caution to the winds .</li>
+						<li><input type="radio" name="test17" id="" class="rad"
+							value='C'><span>C</span>No matter what happen .</li>
+						<li class="bn"><input type="radio" name="test17" id=""
+							class="rad" value='D' /><span>D</span>No care three seven
+							Twenty-one .</li>
+					</ul>
+					<input type="hidden" value="A">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>18.</span>美中不足
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test18" id="" class="rad"
+							value='A' /><span>A</span>Beautiful is not enough .</li>
+						<li><input type="radio" name="test18" id="" class="rad"
+							value='B' /><span>B</span>A fly in the ointment</li>
+						<li><input type="radio" name="test18" id="" class="rad"
+							value='C'><span>C</span>American Chinese not enough</li>
+						<li class="bn"><input type="radio" name="test18" id=""
+							class="rad" value='D' /><span>D</span>It is not enough during
+							Beauty .</li>
+					</ul>
+					<input type="hidden" value="C">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>19.</span>人山人海
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test19" id="" class="rad"
+							value='A' /><span>A</span>People mountain and people sea .</li>
+						<li><input type="radio" name="test19" id="" class="rad"
+							value='B' /><span>B</span>The people like mountain and sea .</li>
+						<li><input type="radio" name="test19" id="" class="rad"
+							value='C'><span>C</span>Huge crowds of people .</li>
+						<li class="bn"><input type="radio" name="test19" id=""
+							class="rad" value='D' /><span>D</span>People mountain people sea
+						</li>
+					</ul>
+					<input type="hidden" value="D">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="test">
+		<div class="score">
+			<img src="images/test_bg.png" alt=""
+				style="border: none; border-radius: 0px;" />
+		</div>
+		<div class="test_con">
+			<div class="item">
+				<div class="tit">
+					<span>20.</span>有话快说，有屁快放
+				</div>
+				<div class="item_con">
+					<ul>
+						<li><input type="radio" name="test20" id="" class="rad"
+							value='A' /><span>A</span>Would you get to the point</li>
+						<li><input type="radio" name="test20" id="" class="rad"
+							value='B' /><span>B</span>Speaking just farts</li>
+						<li><input type="radio" name="test20" id="" class="rad"
+							value='C'><span>C</span>Say quickly Fart quickly .</li>
+						<li class="bn"><input type="radio" name="test20" id=""
+							class="rad" value='D' /><span>D</span>You have painting hurry
+							say, you have ass hurry fart .</li>
+					</ul>
+					<input type="hidden" value="D">
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<div class="test end" id='level1'>
+		<div class="score">
+			<img src="" alt="" />
+		</div>
+		<div class="test_con">
+			<div class="answer_con">
+				<h1>网络英语一级，你完了</h1>
+				<p>
+					<span>详细分析：</span><br />
+					我很遗憾的告诉你，在美国你是绝对看不懂西游记、红楼梦、水浒传和葫芦娃的，还能不能好好玩了，还能不能愉快的做题了，那么认真
+				</p>
+			</div>
+
+		</div>
+		<div class="share">
+			<img src="images/share.png" alt="分享" />
+		</div>
+	</div>
+	<div class="test end" id='level2'>
+		<div class="score">
+			<img src="" alt="" />
+		</div>
+		<div class="test_con">
+			<div class="answer_con">
+				<h1>网络英语二级，别放弃治疗</h1>
+				<p>
+					<span>详细分析：</span><br />
+					这个分数充分说明了，你对英语还保留着那份残存的理智。为了让中英语更好的走向世界，为了世界文化一体化进程早日实现，亲，药不能停，革命之路漫长，治疗还得继续……
+				</p>
+			</div>
+
+		</div>
+		<div class="share">
+			<img src="images/share.png" alt="分享" />
+		</div>
+	</div>
+	<div class="test end" id='level3'>
+		<div class="score">
+			<img src="" alt="" />
+		</div>
+		<div class="test_con">
+			<div class="answer_con">
+				<h1>网络英语三级，Chinglish之魔</h1>
+				<p>
+					<span>详细分析：</span><br />
+					相信英文版《甄环传》对你来说已是小菜一碟，你的级别已远在这些凡人的翻译水平之上。中国人民需要你，快去翻译美国大片吧，相信凭我们13亿人口Chinalish，美国教育部很快会请你当国文老师
+				</p>
+			</div>
+
+		</div>
+		<div class="share">
+			<img src="images/share.png" alt="分享" />
+		</div>
+	</div>
+	<div class="test end" id='level4'>
+		<div class="score">
+			<img src="" alt="" />
+		</div>
+		<div class="test_con">
+			<div class="answer_con">
+				<h1>网络英语四级，Chinglish之神</h1>
+				<p>
+					<span>详细分析：</span><br />
+					一定是上学的时候只顾着泡网吧玩游戏聊妹子，所以你才有这样的分数。美国人民需要你，快去翻译中国大片吧，把国产大片带向美国，断其词汇，乱其语法，扰其文化，同化他同化他！
+				</p>
+			</div>
+
+		</div>
+		<div class="share">
+			<img src="images/share.png" alt="分享" />
+		</div>
+	</div>
+	<div class="share_b">
+		<img src="images/fx.png" alt="" />
+	</div>
+
+	<!--<div class="guanzhu">
+  
+    <img src="images/ico_tc_bg.png" alt="关注"/>
+    </div>-->
+
+	<div class="guanzhu1" id="guanzhu">
+		<div class="jt">
+			<img src="images/jiantou.png" alt="" />
+		</div>
+		<p id="gz_p">关注线话英语免费学三个月微信课程</p>
+		<div class="guanzhu_but">
+			<a href="http://mp.weixin.qq.com/s?__biz=MjM5MTE0ODA2MA==&mid=201128529&idx=1&sn=eaab915fd52a6c3f6e380eaf7b43848f#rd">关注微信：线话英语</a>
+		</div>
+	</div>
+	<input type="hidden" name='sumScore' id='sumScore' value="0">
+</body>
+</html>
